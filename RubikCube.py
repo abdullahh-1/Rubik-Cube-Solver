@@ -1,3 +1,6 @@
+import copy
+
+
 def deepCopy(destination, sour):
     for i in range(len(sour)):
         for j in range(len(sour[i])):
@@ -19,6 +22,7 @@ class RubikCube:
     D = [[], [], []]
     B = [[], [], []]
     L = [[], [], []]
+    Moves = []
 
     def __init__(self):
         self.F = [['R', 'R', 'R'],
@@ -39,6 +43,7 @@ class RubikCube:
         self.L = [['G', 'G', 'G'],
                   ['G', 'G', 'G'],
                   ['G', 'G', 'G']]
+        self.Moves = []
 
     def copy(self, temp):
         deepCopy(self.F, temp.F)
@@ -91,8 +96,8 @@ class RubikCube:
 
     # rotating clockwise------------------------------------------------
     def rotateF(self):
-        c = RubikCube()
-        c.copy(self)
+        c = copy.deepcopy(self)
+        c.Moves.append("F")
         # Forward
         temp = c.F[0][0]
         c.F[0][2], temp = temp, c.F[0][2]
@@ -122,8 +127,8 @@ class RubikCube:
         return c
 
     def rotateL(self):
-        c = RubikCube()
-        c.copy(self)
+        c = copy.deepcopy(self)
+        c.Moves.append("L")
         # Face
         temp = c.L[0][0]
         c.L[0][2], temp = temp, c.L[0][2]
@@ -155,8 +160,8 @@ class RubikCube:
         return c
 
     def rotateR(self):
-        c = RubikCube()
-        c.copy(self)
+        c = copy.deepcopy(self)
+        c.Moves.append("R")
         # Face
         temp = c.R[0][0]
         c.R[0][2], temp = temp, c.R[0][2]
@@ -188,8 +193,8 @@ class RubikCube:
         return c
 
     def rotateU(self):
-        c = RubikCube()
-        c.copy(self)
+        c = copy.deepcopy(self)
+        c.Moves.append("U")
         # Face
         temp = c.U[0][0]
         c.U[0][2], temp = temp, c.U[0][2]
@@ -211,8 +216,8 @@ class RubikCube:
         return c
 
     def rotateD(self):
-        c = RubikCube()
-        c.copy(self)
+        c = copy.deepcopy(self)
+        c.Moves.append("D")
         # Face
         temp = c.D[0][0]
         c.D[0][2], temp = temp, c.D[0][2]
@@ -234,8 +239,8 @@ class RubikCube:
         return c
 
     def rotateB(self):
-        c = RubikCube()
-        c.copy(self)
+        c = copy.deepcopy(self)
+        c.Moves.append("B")
         # Face
         temp = c.B[0][0]
         c.B[0][2], temp = temp, c.B[0][2]
